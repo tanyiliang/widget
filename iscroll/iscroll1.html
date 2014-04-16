@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <title>iscroll中的回到顶部</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="iscroll.css" />
+    <script type="text/javascript" src="zepto.js"></script>
+    <script type="text/javascript" src="gmu.js"></script>
+    <script type="text/javascript" src="event.js"></script>
+    <script type="text/javascript" src="widget.js"></script>
+    <script type="text/javascript" src="iscroll-infinite.js"></script>
+    <script type="text/javascript" src="$iscroll.js"></script>
+
+
+</head>
+<body>
+
+<div id="hour"></div>
+
+<script>
+for (var i = 0,data = []; i <24; i++) {
+    data.push(i);
+};
+
+$('#hour').iscroll({
+    data:data,
+    title:'HOUR',
+    showLine:5
+}).on( 'afterScroll', function(e,iscrollObj) {
+    console.log(iscrollObj);
+    console.log($('#hour').iscroll("getIndex"));
+    // $('#hour').iscroll("destroy");
+});
+setTimeout(function(){
+    $('#hour').iscroll("setIndex",22);
+},500 );
+
+</script>
+</body>
+</html>

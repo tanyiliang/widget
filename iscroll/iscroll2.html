@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <title>iscroll中的回到顶部</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="iscroll.css" />
+    <script type="text/javascript" src="zepto.js"></script>
+    <script type="text/javascript" src="gmu.js"></script>
+    <script type="text/javascript" src="event.js"></script>
+    <script type="text/javascript" src="widget.js"></script>
+    <script type="text/javascript" src="iscroll-infinite.js"></script>
+    <script type="text/javascript" src="$iscroll.js"></script>
+
+</head>
+<body>
+
+
+<div id="month" style="float:left;width:50%;height:44px"></div>
+<div id="day" style="float:left;width:50%;height:44px"></div>
+
+<script>
+
+
+function formatEachData(value){
+    return value>-1&&value<10 && (value+"").length<2?"0"+value:value+"";
+}
+
+for(var i = 1, day28 = []; i <= 28; i++) {
+    day28.push(i+"");
+}
+for(var i = 1, day30 = []; i <= 30; i++) {
+    day30.push(i+"");
+}
+for(var i = 1, day31 = []; i <= 31; i++) {
+    day31.push(i+"");
+}
+for(var i = 1, month12 = []; i <= 12; i++) {
+    month12.push(i+"");
+}
+
+function getMonthDays(month){
+    if( ['1','3','5','7','8','10','12'].indexOf(month)>-1){
+        return day31;
+    }else if (month == '2'){ //TODO 暂不考虑闰年
+        return day28;
+    } else {
+        return day30;
+    }
+}
+
+var dayIscroll = $('#day').iscroll({
+    data:day31,
+    title:'DAY',
+    value:'31'
+});
+
+
+$('#month').iscroll({
+    data:month12,
+    title:'MONTH',
+    value:'10'
+}).on( 'afterScroll', function(e,scroll) {
+    var dayValue = dayIscroll.iscroll("getValue");
+    var data = getMonthDays(scroll.value);
+    dayIscroll.iscroll("reloadData",{'data':data,'value':dayValue,iscroll:true});
+});
+
+</script>
+</body>
+</html>

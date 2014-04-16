@@ -1,0 +1,83 @@
+.ui-time .scroller-head {
+    height: 44px;
+    line-height:44px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 14px;
+    background-color: #fefefe;
+}
+
+.ui-time .scroller-body {
+    position: absolute;
+    z-index: 1;
+/*    left: 0px;
+*/    width: 100%;
+/*    height: 132px;
+*/    overflow: hidden;
+
+    /* background:-webkit-gradient(linear,left bottom,left top,from(#f7f7f7),color-stop(0.52,rgba(245,245,245,0)),color-stop(0.48,rgba(245,245,245,0)),to(#f7f7f7)); */
+    /* background:-webkit-linear-gradient(#f7f7f7 0,rgba(245,245,245,0) 52%,rgba(245,245,245,0) 48%,#f7f7f7 100%); */
+    background:-moz-linear-gradient(#f7f7f7 0,rgba(245,245,245,0) 52%,rgba(245,245,245,0) 48%,#f7f7f7 100%);
+    background:linear-gradient(#f0f0f0 0,rgba(245,245,245,0) 40%,rgba(245,245,245,0) 60%,#f0f0f0 100%)
+
+}
+
+.ui-time .scroller-cover {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    pointer-events: none;
+}
+
+
+.ui-time .scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    width: 100%;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+.ui-time .scroller ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.ui-time .scroller li {
+    position: absolute;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    font-size: 14px;
+    text-align: center;
+    color: #9d9d9d;
+    -webkit-transition: opacity .2s ease-in-out;
+    -moz-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+
+}
+
+.ui-time .scroller li.active {
+    color:#000;
+}
+
