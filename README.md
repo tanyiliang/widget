@@ -18,8 +18,8 @@
 这条命令将会把grunt命令植入到你的系统路径中，这样就允许你从任意目录来运行它(定位到任意目录运行grunt命令)。
 2. npm install grunt --save-dev  
 安装最新版的Grunt到你的项目中，并自动将它添加到你的项目依赖中
-3. npm install [grunt-contrib-jshint、grunt-contrib-concat、grunt-contrib-uglify] --save-dev
-安装插件，功能依次为文件检测、文件合并，文件压缩
+3. npm install
+安装依赖插件，配置在package.json的devDependencies里面，作用依次为文件检测、文件合并，文件压缩
 4. package.json
 	<pre>{
 	  "name": "myIscroll",
