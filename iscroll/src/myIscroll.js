@@ -35,29 +35,24 @@
                         function(){
                             scroll.reorderInfinite();
                             // delete scroll.reloadOnce;
-                        }
-                    ,1)
+                        },1);
                     scroll.reloadOnce = true;
                 }
             }
-        }
+        };
         opt = $.extend(true, opt, options);
         this.$el = $el;
         this.iscroll = new IScroll($el[0],opt);
-
-    };
-
-
-    IScrollObj.prototype = {
-        scrollTo: function (y, time) {
-            if(this.iscroll.y !== y){
-                this.iscroll.scrollTo(this.iscroll.x, y+this.iscroll.y, time, IScroll.utils.ease.quadratic);
-            }
-        }
     }
 
-    var _activeClass = "active"; //滚动控件选中行的样式,不开放修改
 
+    IScrollObj.prototype.scrollTo = function (y, time) {
+        if(this.iscroll.y !== y){
+            this.iscroll.scrollTo(this.iscroll.x, y+this.iscroll.y, time, IScroll.utils.ease.quadratic);
+        }
+    };
+
+    var _activeClass = "active"; //滚动控件选中行的样式,不开放修改
 
     /**
      * 滑块控件,可单独使用,一般用于时间选择
@@ -102,7 +97,7 @@
                 me.$el = $('<div></div>');
             }
             me._initOption();//init option
-            me.$el.addClass('ui-time').append((_opts['title']?me._generateHeadHTML():'')+me._generateBodyHTML());//init html
+            me.$el.addClass('ui-time').append((_opts.title?me._generateHeadHTML():'')+me._generateBodyHTML());//init html
             me.$body = me.$el.find(".scroller-body");
             me._setPosition();//fix css left and cover position
             return me;
@@ -111,7 +106,7 @@
         _initOption:function(){
             var me = this,
                 _opts = me._options;
-            if((me.datalength=_opts.data.length) == 0 ) {
+            if((me.datalength=_opts.data.length) === 0 ) {
                 throw new Error("need data param!!");
             }
             _opts.value = _opts.value || _opts.data[0];
@@ -283,7 +278,7 @@
             $iscroll.on('scrollEnd', function() {
                 var mod = this.y%height;
                 if(iscrollObj._scrollStop) return ;//在滚动修正的时候避免触发两次回调
-                if(mod ==0){ //正好不偏不倚
+                if(mod ===0){ //正好不偏不倚
                     var index = (-this.y/height+me.fixLine)%me.datalength; //这里的+1,表示选中的实际上是界面第2个元素
                     me._setSelect(_opts.data[index],index);
                 }else{
